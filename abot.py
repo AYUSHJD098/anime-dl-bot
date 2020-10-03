@@ -1,6 +1,7 @@
 from anime_downloader.sites import ALL_ANIME_SITES
 from anime_downloader.sites import get_anime_class
 
+# Importing essentials
 from discord.ext import commands
 import discord
 import time
@@ -8,6 +9,7 @@ import json
 import os
 import sys
 import subprocess
+
 
 try:
     import testkeys 
@@ -27,6 +29,7 @@ default_provider = 'animepahe'
 
 embed_name = 'Search query:'
 
+# Get prefix Function
 def get_prefix(client, message, path = guild_config, change = {}):
     prefix = 'a!'
     guild_id = str(message.guild.id) if message.guild else str(message.channel.id)
@@ -60,7 +63,8 @@ client = commands.Bot(command_prefix = get_prefix)
 def run_bot(client):
     client.run(token)
 
-def Int(number): #Can it be converted to int
+    # Function for converting into Integer
+def Int(number):
     try:
         number = int(number)
         return(True)
@@ -95,7 +99,7 @@ def Load(path,default=False): #All user info in anime.json
     else:
         print(f'file: "{path}" not found, can not load')
         return default
-
+# Search function
 def Search(query,Provider):
     Provider = get_anime_class(Provider)
     results = ''
